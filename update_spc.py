@@ -150,14 +150,26 @@ def main():
         wind = risk_for_file(z, "_wind", point)
         hail = risk_for_file(z, "_hail", point)
 
-    output = {
-        "location": "Marlborough, MO",
-        "category": category,
-        "tornado": clean_percentage(tornado),
-        "wind": clean_percentage(wind),
-        "hail": clean_percentage(hail),
-        "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-    }
+   tornado_clean = clean_percentage(tornado)
+wind_clean = clean_percentage(wind)
+hail_clean = clean_percentage(hail)
+
+spc_summary = (
+    f"{category} | "
+    f"T{tornado_clean.replace('%', '')} "
+    f"W{wind_clean.replace('%', '')} "
+    f"H{hail_clean.replace('%', '')}"
+)
+
+output = {
+    "location": "Marlborough, MO",
+    "spc": spc_summary,
+    "category": category,
+    "tornado": tornado_clean,
+    "wind": wind_clean,
+    "hail": hail_clean,
+    "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+}
 
     with open("spc.json", "w") as file:
         json.dump(output, file, indent=2)
