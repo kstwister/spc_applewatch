@@ -154,23 +154,21 @@ def main():
     wind_clean = clean_percentage(wind)
     hail_clean = clean_percentage(hail)
 
-    spc_summary = (
-        hazards = []
+    hazards = []
 
-        if tornado_clean != "0%":
-            hazards.append(f"🌪{tornado_clean}")
+    if tornado_clean != "0%":
+        hazards.append(f"🌪{tornado_clean}")
 
-        if wind_clean != "0%":
-            hazards.append(f"💨{wind_clean}")
+    if wind_clean != "0%":
+        hazards.append(f"💨{wind_clean}")
 
-        if hail_clean != "0%":
-            hazards.append(f"🧊{hail_clean}")
+    if hail_clean != "0%":
+        hazards.append(f"🧊{hail_clean}")
 
-        if hazards:
-            spc_summary = f"{category} | " + " ".join(hazards)
-        else:
-            spc_summary = category
-    )
+    if hazards:
+        spc_summary = f"{category} | " + " ".join(hazards)
+    else:
+        spc_summary = category
 
     output = {
         "location": "Marlborough, MO",
