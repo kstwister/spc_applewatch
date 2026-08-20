@@ -172,7 +172,7 @@ def main():
 
     output = {
         "location": "Marlborough, MO",
-        "⚡": spc_summary,
+        "\u200B": spc_summary,
         "category": category,
         "tornado": tornado_clean,
         "wind": wind_clean,
