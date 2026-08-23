@@ -174,8 +174,10 @@ def main():
 
     if hail_clean != "0%":
         hazards.append(f"🧊{hail_clean}")
-
-    if hazards:
+    
+    if category == "NONE":
+        spc_summary = ""
+    elif hazards:
         spc_summary = f"{category} | " + " ".join(hazards)
     else:
         spc_summary = category
