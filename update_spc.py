@@ -54,6 +54,10 @@ def risk_for_file(zip_file, filename_part, point):
     matches = []
 
     for sr in reader.iterShapeRecords():
+        # SPC shapefiles can occasionally contain empty/null shapes.
+        # Skip them instead of trying to convert them to GeoJSON.
+        if sr.shape.shapeType == shapefile.NULL:
+            continue
         polygon = shape(sr.shape.__geo_interface__)
 
         if polygon.contains(point) or polygon.touches(point):
@@ -101,6 +105,9 @@ def category_for_file(zip_file, point):
     categories = []
 
     for sr in reader.iterShapeRecords():
+        if sr.shape.shapeType == shapefile.NULL:
+            continue
+            
         polygon = shape(sr.shape.__geo_interface__)
 
         if polygon.contains(point) or polygon.touches(point):
