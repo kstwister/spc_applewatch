@@ -12,6 +12,9 @@ from shapely.geometry import Point, shape
 LATITUDE = 38.5709
 LONGITUDE = -90.3375
 
+#38.5709
+#-90.3375
+
 SPC_ZIP_URL = "https://www.spc.noaa.gov/products/outlook/day1otlk-shp.zip"
 
 
