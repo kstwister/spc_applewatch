@@ -136,13 +136,23 @@ def clean_percentage(value):
 
     value = str(value).strip()
 
-    if value == "0":
-        return "0%"
-
-    if "%" not in value and value.replace(".", "", 1).isdigit():
-        return f"{value}%"
-
-    return value
+    # Already formatted as a percentage
+    if "%" in value:
+        return value
+    try:
+        number = float(value)
+        if number == 0:
+            return "0%"
+        # SPC probabilities may be stored as decimals:
+        # 0.02 = 2%, 0.05 = 5%, 0.10 = 10%, etc.
+        if 0 < number < 1:
+            number *= 100
+        # Remove unnecessary decimal (.0)
+        if number.is_integer():
+            return f"{int(number)}%"
+        return f"{number:g}%"
+    except ValueError:
+        return value
 
 
 def main():
