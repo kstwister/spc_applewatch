@@ -9,9 +9,13 @@ from shapely.geometry import Point, shape
 
 
 # Marlborough, Missouri
-LATITUDE = 38.5709
-LONGITUDE = -90.3375
+LATITUDE = 39.0229
+LONGITUDE = -94.7146
 
+#39.0229
+#-94.7146
+
+#missouri 
 #38.5709
 #-90.3375
 
